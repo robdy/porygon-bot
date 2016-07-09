@@ -25,6 +25,13 @@ module.exports = {
       return commandName;
     }
   },
+  github: {
+    'userName/repositoryName': {
+      'all': ['#ircroom1'], // Send all events for userName/repositoryName to #ircroom1
+      'issues': ['#ircroom2'], // Send only issues to #ircroom2
+      'push': ['#ircroom3'] // Send push to #ircroom3
+    } // Show all events for userName/repositoryName in #ircroom1
+  },
   tasks: {
     '#ircroom1': true // allow all tasks in this room
     // etc.
@@ -44,5 +51,6 @@ module.exports = {
       "#otherchannel": ["yoursubreddit","othersub"], //If you wish to restrict access, an array can be used to specify which
       "#yetanotherchannel": ["ASingleSub"]           //subreddits can be accessed in a given channel.
     }
-  }
+  },
+  github_secret: 'myhashsecret'
 };

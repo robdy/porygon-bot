@@ -8,6 +8,8 @@ var db = require('./services/db');
 var commands = require('./commands');
 const tasks = require('./tasks');
 const warn = _.memoize(console.warn);
+const github = require('./services/github');
+
 
 if (!config.disable_db) {
     mysql.createConnection({
@@ -48,6 +50,8 @@ var bot = new irc.Client(config.server, config.nick, {
     encoding: 'UTF-8',
     password: config.password
 });
+
+github.setUp(outputResponse);
 
 function outputResponse(target, messages) {
     if (!messages) {
