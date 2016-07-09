@@ -23,7 +23,7 @@ const setUp = (outputResponse) => {
     const rooms = getRoomsForAction(name, "push");
     const user = data.sender.login;
     const url = data.head_commit.url;
-    const ref = data.ref;
+    const ref = data.ref.split('/').slice(-1)[0];
     const number = data.commits.length;
 
     const string = `${user} pushed ${number} commits to ${ref} on ${name} (head: ${url})`;
