@@ -22,7 +22,7 @@ const setUp = (outputResponse) => {
     const name = data.repository.full_name;
     const rooms = getRoomsForAction(name, "push");
     const user = data.sender.login;
-    const url = data.head_commit.url;
+    const url = data.head_commit ? data.head_commit.url :'unknown';
     const ref = data.ref.split('/').slice(-1)[0];
     const number = data.commits.length;
 
@@ -46,7 +46,7 @@ const setUp = (outputResponse) => {
       actioned = "closed without merging";
     }
 
-    const string = `${user} ${actioned} PR# ${number} (${title}) on ${name} (${url})`;
+    const string = `${user} ${actioned} PR#${number} (${title}) on ${name} (${url})`;
     sendToRooms(rooms, string);
   });
 
@@ -59,7 +59,7 @@ const setUp = (outputResponse) => {
     const number = data.issue.number;
     const title = data.issue.title;
     const url = data.issue.url;
-    const string = `${user} ${actioned} issue# ${number} (${title}) on ${name} (${url})`;
+    const string = `${user} ${actioned} issue#${number} (${title}) on ${name} (${url})`;
     sendToRooms(rooms, string);
   });
 
